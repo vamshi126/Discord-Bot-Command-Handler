@@ -16,6 +16,8 @@ export const client =new DiscordJS.Client({
 })
 
 dotenv.config()
+
+
 client.login(process.env.TOKEN)
 
 
