@@ -1,13 +1,17 @@
-import dotenv from "dotenv"
+
+import {ApplicationCommandDataResolvable, Client, Collection, GatewayIntentBits,} from "discord.js"
+import { CommandType } from "../typings/commands";
 import {glob} from'glob'
 import {promisify}from "util"
+import { RegisterCommandsOptions } from "../typings/client";
 import path from 'node:path'
-import DiscordJS, { Collection, GatewayIntentBits } from 'discord.js'
-dotenv.config()
-
-
-export const client =new DiscordJS.Client({
-    intents:[
+import { client } from "..";
+const globPromise=promisify(glob)
+export class ExtendedClient extends Client{
+    commands:Collection<string,CommandType>=new Collection();
+    constructor(){
+        super({
+            intents:[
       
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -17,54 +21,24 @@ export const client =new DiscordJS.Client({
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.MessageContent,
 
-    ]
-})
+    ]});
+    }
+    
+   start(){
+      this.RegisterModules()
+      this.login(process.env.TOKEN)
 
-dotenv.config()
-client.login(process.env.TOKEN)
-
-
-
-
-
-client.on('ready',()=>{
-    console.log("hey there! I'm on duty..")
-    client.user?.setStatus('idle')
-    client.user?.setPresence(
-    {activities:
-    [
-        {name:'with words!'}
-    ]
-    }) 
-  
-}),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const globPromise=promisify(glob)
-export interface Client{
-    commands:Collection<string,any>=new Collection();
-}
-   
+   }
 async importFile(filePath:string){
 return(await import(filePath)).default
 }
 
 
+      async RegisterModules(){
     const commandsPath=path.join(__dirname,'./src/commands')
     console.log(commandsPath)
-     const commandFiles=await globPromise(`${__dirname}/./commands/*{.ts,.js}`);
+     const slashCommands:ApplicationCommandDataResolvable[]=[]; //all commands are loaded here
+     const commandFiles=await globPromise(`${__dirname}/../commands/*{.ts,.js}`);
     
       commandFiles.forEach(async(file)=>{
        const filePath=path.join(commandsPath,file)
@@ -77,7 +51,7 @@ return(await import(filePath)).default
        }
        console.log(client.commands)
        
- 
+    })
      
       console.log(commandFiles)
      /* commandFiles.forEach(async(filePath)=>{
