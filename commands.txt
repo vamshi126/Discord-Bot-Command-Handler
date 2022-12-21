@@ -1,0 +1,15 @@
+npm init -y
+npm install discord.js ts-node nodemon typescript dotenv
+ 
+ 
+changes in package.json: 
+ "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node .",
+    "dev": "nodemon src/index.ts"
+  }, 
+  
+  
+  
+make src/index.ts, dist directories  
