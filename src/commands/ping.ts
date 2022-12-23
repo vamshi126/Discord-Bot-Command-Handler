@@ -1,9 +1,14 @@
 import {SlashCommandBuilder} from 'discord.js'
+
 module.exports={
 data:new SlashCommandBuilder()
-          .setName('pang')
+          .setName('ping')
           .setDescription('hmm'),
           async execute(interaction){
-await interaction.reply('off');
+           
+          await  interaction.deferReply()
+         
+          await interaction.editReply('ping')
+       
           }
 }

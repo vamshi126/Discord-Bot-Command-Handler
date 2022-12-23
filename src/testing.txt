@@ -1,0 +1,12 @@
+{
+    "clientId":"1046724624450322462",
+    "guildId":"1046726633169629184",
+   "token" : "MTA0NjcyNDYyNDQ1MDMyMjQ2Mg.GAFhtz.QUuNez4B4Kmj5PIVNdE9qnlUWx2VImvknhJtlI"
+
+}
+/*try{
+    await command.execute(interaction)
+    }catch(error){
+        console.log(`Error in executing ${interaction.commandName}`)
+        console.log(error)
+    }*/
