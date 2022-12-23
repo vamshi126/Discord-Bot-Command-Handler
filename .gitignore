@@ -3,5 +3,4 @@ node_modules/
 .txt
 dist/
 .pub
-config.json
-package-lock.json
+.json
