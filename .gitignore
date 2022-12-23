@@ -4,4 +4,4 @@ node_modules/
 dist/
 .pub
 github
-./src/config.json
+src/config.json
