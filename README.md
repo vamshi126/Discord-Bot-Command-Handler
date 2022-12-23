@@ -1,4 +1,4 @@
-# Discord-Bot-Command-Event-Handler
+# Discord Bot Command and Event Handler
 
 
 
