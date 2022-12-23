@@ -3,5 +3,4 @@ node_modules/
 .txt
 dist/
 .pub
-
-/src/config.json
+config
