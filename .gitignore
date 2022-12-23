@@ -2,5 +2,4 @@
 node_modules/
 .txt
 dist/
-.pub
-*.json
+config.json
