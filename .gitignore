@@ -3,5 +3,5 @@ node_modules/
 .txt
 dist/
 .pub
-github
-src/config.json
+
+config.json
