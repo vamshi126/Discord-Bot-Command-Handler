@@ -4,4 +4,4 @@ node_modules/
 dist/
 .pub
 
-config.json
+/src/config.json
